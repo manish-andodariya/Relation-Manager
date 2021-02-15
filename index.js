@@ -45,7 +45,7 @@ function checkRelation(u1, u2) {
     users.forEach(addNode);
     relations.forEach((route) => addEdge(...route));
 
-    console.log(adjcentList);
+    // console.log(adjcentList);
 
     // BFS implimentation
     function bfs(start, end) {
@@ -63,7 +63,7 @@ function checkRelation(u1, u2) {
 
           for (const destination of destinations) {
             if (destination === end) {
-              console.log(`Relation Found on ` + user);
+              // console.log(`Relation Found on ` + user);
               visited.add(destination);
               found = true;
             }
@@ -74,11 +74,11 @@ function checkRelation(u1, u2) {
             }
           }
         }
-        console.log(visited);
+        // console.log(visited);
         let visitedArray = [...visited];
         return { visitedArray, found };
       } catch (error) {
-        console.log("no Found");
+        // console.log("no Found");
         return { found };
       }
     }
@@ -89,7 +89,7 @@ function checkRelation(u1, u2) {
   return res;
 }
 let out = checkRelation("Manish", "Janvi");
-console.log(out);
+// console.log(out);
 
 /*********end logic */
 
@@ -97,7 +97,7 @@ console.log(out);
  * get request for list of available users
  */
 app.get("/users", (req, res) => {
-  console.log({ users, relationType });
+  // console.log({ users, relationType });
   res.send({ users, relationType });
 });
 
@@ -106,7 +106,7 @@ app.get("/users", (req, res) => {
  */
 app.post("/adduser", (req, res) => {
   let newuser = req.body.text;
-  console.log(newuser);
+  // console.log(newuser);
   let isUser = users.includes(newuser);
   if (!isUser) {
     users.push(newuser);
@@ -130,7 +130,7 @@ app.post("/addrelation", (req, res) => {
   if (!isAlready) {
     relationDetails.push(relateMsg);
     relations.push(relat2);
-    console.log(relations, relationDetails);
+    // console.log(relations, relationDetails);
     res.send({ msg: "Added Successfully", relation: relateMsg });
   } else {
     res.send({ msg: "Already Exists" });
@@ -144,9 +144,9 @@ app.post("/trackrelation", async (req, res) => {
   let trackpath = await req.body;
   let person1 = await req.body.p1;
   let person2 = await req.body.p2;
-  console.log(person1, person2);
+  // console.log(person1, person2);
   let link = checkRelation(person1, person2);
-  console.log(link);
+  // console.log(link);
   res.send(link);
 });
 
