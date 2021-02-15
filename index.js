@@ -12,12 +12,9 @@ app.use(express.urlencoded({ extended: false }));
  * App Logic
  */
 
-let users = ["Manish", "Karan", "Janvi"].slice();
+let users = ["Manish"].slice();
 let relationType = ["Brother", "Sister", "Friend", "Mother", "Father"].slice();
-let relations = [
-  ["Manish", "Janvi"],
-  ["Janvi", "Karan"],
-];
+let relations = [];
 let relationDetails = [];
 
 /***********
